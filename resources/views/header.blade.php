@@ -10,25 +10,25 @@
 			<div class="flex w-full pt-2 content-center justify-between lg:w-1/2 lg:justify-end">
 				<ul class="list-reset flex justify-between flex-1 lg:flex-none items-center">
 				  <li class="mr-3">
-					<a class="inline-block py-2 px-4 text-gray-200 no-underline hover:text-gray-400 hover:text-underline" href="/champion">Champions</a>
+					<a class="inline-block py-2 px-2 text-gray-200 no-underline hover:text-gray-400 hover:text-underline" href="/champion">Champions</a>
 				  </li>
 				  <li class="mr-3">
-					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-4" href="/summoner">Summoners</a>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-2" href="/summoner">Summoners</a>
 				  </li>
 				  <li class="mr-3">
-					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-4" href="/matches">Match History</a>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-2" href="/matches">Match History</a>
 				  </li>
                   @guest
 					<li class="mr-3">
-					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-4" href="/login">Log In</a>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-2" href="/login">Log In</a>
 				  </li>
                   @endguest
                   @auth
                   <li class="mr-3">
-					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-4" href="/admin/game">Add Game</a>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-2" href="/admin/game">Add Game</a>
 				  </li>
                   <li class="mr-3">
-					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-4" href="/signout">Log Out</a>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-2" href="/signout">Log Out</a>
 				  </li>
                   @endauth
 				</ul>
