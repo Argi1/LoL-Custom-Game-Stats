@@ -4,12 +4,12 @@
 <head>
     <title>Sign in</title>
 </head>
-@extends('head')
+@include('head')
 
 <body>
     <div class="login-form">
         <div class="cotainer">
-            <div class="row justify-content-center pt-36 md:pt-24">
+            <div class="row justify-content-center pt-24">
                 <div class="col-md-4">
                     <div class="card bg-zinc-900 rounded-lg shadow-xl text-gray-400">
                         <div class="card-body">
