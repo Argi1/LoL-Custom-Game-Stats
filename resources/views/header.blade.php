@@ -1,38 +1,87 @@
 <!DOCTYPE html>
 <html>
-    <nav class="bg-zinc-800 p-2 mt-0 fixed w-full z-10 top-0">
+    <nav class="bg-zinc-800 p-2 mt-0 fixed w-full z-51 top-0">
         <div class="container mx-auto flex flex-wrap items-center">
-		    <div class="flex w-full lg:w-1/2 justify-center lg:justify-start text-white font-extrabold">
+		    <div class="flex w-1/2 sm:w-full lg:w-1/2 sm:justify-center lg:justify-start text-white font-extrabold">
 				<a class="text-gray-200 no-underline hover:text-gray-200 hover:no-underline" href="/">
 					<span class="text-2xl pl-2">Zilean OÜ</span>
 				</a>
             </div>
-			<div class="flex w-full pt-2 content-center justify-between lg:w-1/2 lg:justify-end">
-				<ul class="list-reset flex justify-between flex-1 lg:flex-none items-center">
+			<div class="sm:flex w-full pt-2 content-center justify-between lg:w-1/2 lg:justify-end hidden">
+				<ul class="list-reset flex justify-between flex-1 lg:flex-none items-center font-semibold">
 				  <li class="mr-3">
-					<a class="inline-block py-2 px-2 text-gray-200 no-underline hover:text-gray-400 hover:text-underline" href="/champion">Champions</a>
+					<a class="inline-block py-2 px-2 text-gray-200 no-underline hover:text-gray-400" href="/champion">Champions</a>
 				  </li>
 				  <li class="mr-3">
-					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-2" href="/summoner">Summoners</a>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 py-2 px-2" href="/summoner">Summoners</a>
 				  </li>
 				  <li class="mr-3">
-					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-2" href="/matches">Match History</a>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 py-2 px-2" href="/matches">Match History</a>
 				  </li>
                   @guest
 					<li class="mr-3">
-					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-2" href="/signin">Sign In</a>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 py-2 px-2" href="/signin">Sign In</a>
 				  </li>
                   @endguest
                   @auth
                   <li class="mr-3">
-					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-2" href="/admin/game">Add Game</a>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 py-2 px-2" href="/admin/game">Add Game</a>
 				  </li>
                   <li class="mr-3">
-					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-2" href="/signout">Log Out</a>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 py-2 px-2" href="/signout">Log Out</a>
 				  </li>
                   @endauth
 				</ul>
 			</div>
-        </div>
+			<div class="sm:hidden w-1/2 flex justify-end">
+				<button class="outline-none mobile-menu-button">
+					<svg class=" w-10 h-10 text-gray-200 hover:text-gray-400 "
+							x-show="!showMenu"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor">
+						<path d="M4 6h16M4 12h16M4 18h16"></path>
+					</svg>
+				</button>
+			</div>
+		</div>
     </nav>
+	<div class="hidden mobile-menu mt-2 w-64 h-full absolute bg-zinc-900 z-50">
+			<ul class="relative text-lg font-semibold">
+				<li>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 py-3 px-3" href="/champion">Champions</a>
+				</li>
+				<li>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 py-3 px-3" href="/summoner">Summoners</a>
+				</li>
+				<li>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 py-3 px-3" href="/matches">Match History</a>
+				</li>
+				@guest
+				<li>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 py-3 px-3" href="/signin">Sign In</a>
+				</li>
+				@endguest
+				@auth
+				<li>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 py-3 px-3" href="/admin/game">Add Game</a>
+				</li>
+				<li>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 py-3 px-3" href="/signout">Log Out</a>
+				</li>
+				@endauth
+			</ul>
+	</div>
+	<script>
+				const btn = document.querySelector("button.mobile-menu-button");
+				const menu = document.querySelector(".mobile-menu");
+
+				btn.addEventListener("click", () => {
+					menu.classList.toggle("hidden");
+				});
+				window.onresize = function(){menu.classList.add("hidden")};
+	</script>
 </html>
