@@ -98,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-4 sm:pl-4">
+            <div class="mt-4 sm:ml-0 ml-4 pl-0 sm:pl-4">
                 <span class="text-2xl font-bold">Most Played By</span>
                 <div class="sm:grid grid-cols-1 ml-1 mt-2">
                     <div>
@@ -118,10 +118,8 @@
                 </div>
             </div>
             <div>
-                <div class="mx-4 my-3 text-gray-200">
-                    <div class="mt-4">
-                        <span class="text-2xl font-bold">Latest Games</span>
-                    </div>
+                <div class="mt-4 sm:ml-0 ml-4 pl-0 sm:pl-4 text-gray-200">
+                    <span class="text-2xl font-bold">Latest Games</span> 
                     <div class="mt-3">
                         @if(count($games)!= 0)
                         @foreach ($games as $game)
@@ -184,7 +182,7 @@
                                             </span>
                                             {{$game->assists}}
                                         </div>
-                                        <div class="text-md leading-4 font-normal row-start-2 col-start-4 md:flex">
+                                        <div class="text-md leading-4 font-normal row-start-2 col-start-4">
                                             <span class="text-md leading-4 font-normal text-gray-500">
                                                 KDA
                                             </span>
