@@ -87,10 +87,8 @@
                 </div>
             </div>
             <div>
-                <div class="mx-4 my-3 text-gray-200">
-                    <div class="mt-4">
-                        <span class="text-2xl font-bold">Latest Games</span>
-                    </div>
+                <div class="mt-4 sm:ml-0 ml-4 pl-0 sm:pl-4 text-gray-200">
+                    <span class="text-2xl font-bold">Latest Games</span> 
                     <div class="mt-3">
                         @foreach ($games as $game)
                         <div class="bg-zinc-900 mx-auto border rounded-sm mb-0.5 h-30 mt-2">
@@ -153,7 +151,7 @@
                                             {{$game->assists}}
                                         </div>
                                         <div
-                                            class="text-md leading-4 font-normal row-start-2 col-start-4 md:flex">
+                                            class="text-md leading-4 font-normal row-start-2 col-start-4">
                                             <span class="text-md leading-4 font-normal text-gray-500">
                                                 KDA
                                             </span>
