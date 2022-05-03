@@ -12,7 +12,7 @@ class CustomAuthController extends Controller
 {
     public function index()
     {
-        return view('auth.login');
+        return view('auth.signin');
     }  
       
     public function authenticate(Request $request)
@@ -32,7 +32,7 @@ class CustomAuthController extends Controller
             return redirect()->intended('/admin/game')->withSuccess('Signed in');
         }
         
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect("signin")->withSuccess('Login details are not valid');
     }
 
     public function signOut(Request $request) {

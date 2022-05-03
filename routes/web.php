@@ -35,6 +35,6 @@ Route::post('/admin/update-champions', [AdminController::class, 'updateChampionL
 Route::get('/admin/game', [AdminController::class, 'showGame']);
 Route::post('/admin/game', [AdminController::class, 'addGame']);
 
-Route::get('/login', [CustomAuthController::class, 'index'])->name('login');
-Route::post('/login', [CustomAuthController::class, 'authenticate']); 
+Route::get('/signin', [CustomAuthController::class, 'index'])->name('signin');
+Route::post('/signin', [CustomAuthController::class, 'authenticate']); 
 Route::get('/signout', [CustomAuthController::class, 'signOut']);

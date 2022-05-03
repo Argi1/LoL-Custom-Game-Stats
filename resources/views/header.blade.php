@@ -20,7 +20,7 @@
 				  </li>
                   @guest
 					<li class="mr-3">
-					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-2" href="/login">Log In</a>
+					<a class="inline-block text-gray-200 no-underline hover:text-gray-400 hover:text-underline py-2 px-2" href="/signin">Sign In</a>
 				  </li>
                   @endguest
                   @auth

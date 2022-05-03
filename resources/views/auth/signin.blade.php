@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Login</title>
+    <title>Sign in</title>
 </head>
 @extends('head')
 
@@ -31,7 +31,7 @@
                                     @endif
                                 </div>
                                 <div class="d-grid mx-auto">
-                                    <button type="submit" class="btn btn-dark btn-block">Signin</button>
+                                    <button type="submit" class="btn btn-dark btn-block">Sign in</button>
                                 </div>
                             </form>
                             @if (session('success'))
