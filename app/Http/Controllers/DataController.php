@@ -34,11 +34,14 @@ class DataController extends Controller
         $champion = Champion::select('name')->firstWhere('name', $search);
         
         if($champion == null){
-            return redirect('summoner/' . $search);
+            $summoner = Summoner::select('name')->firstWhere('name', $search);
+            
+            if($summoner != null){
+                return redirect('summoner/' . $search);
+            }
+            return redirect('/')->withSuccess("No summoner or champion found with name " . $search);
         }
-        else{
-            return redirect('champion/' . $champion->name);
-        }
+        return redirect('champion/' . $champion->name);
     }
 
     // Get summoner by name, get all relevant info and all the games played by this summoner and pass it to page.
