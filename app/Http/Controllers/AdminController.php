@@ -64,6 +64,10 @@ class AdminController extends Controller
             $bans = $request->except('_token', 'replay');
             
             $replayData = json_decode($replay->get(), true);
+
+            if(!self::validateMatchData($replayData, $bans)){
+                return redirect('admin/game')->with('fail', 'There was a problem parsing the given JSON file');
+            }
             
             if(MatchHistory::firstWhere('match_id', $replayData['matchId']) == null){
 
@@ -82,9 +86,9 @@ class AdminController extends Controller
                 }
             }
             else{
-                Log::debug('game exists');
+                return redirect('admin/game')->with('fail', 'Match with Match ID ' . $replayData['matchId'] . ' already exists');
             }
-            return redirect('admin/game');
+            return redirect('admin/game')->withSuccess('Match succesfully added');
         }
         return redirect('login');
     }
@@ -175,5 +179,22 @@ class AdminController extends Controller
         $summonerMatch->match_id = $matchId;
 
         $summonerMatch->save();
+    }
+
+    // Validate that all the required array keys exist and arrays are the correct length.
+    public function validateMatchData($replayData, $bans):bool{
+        if(!array_key_exists('matchId', $replayData) || !array_key_exists('gameDuration', $replayData) || sizeof($bans) != 10 || sizeof($replayData['participants']) != 10){
+            return false;
+        }
+
+        $requiredParticipantKeys = array('name', 'championsKilled', 'numDeaths', 'assists', 'skin', 'level', 'minionsKilled', 'neutralMinionsKilled', 'individualPosition', 'win');
+
+        foreach($replayData['participants'] as $key => $participant){
+            $arrayCheck = !array_diff_key(array_flip($requiredParticipantKeys), $participant);
+            if(!$arrayCheck){
+                return false;
+            }
+        }
+        return true;
     }
 }
