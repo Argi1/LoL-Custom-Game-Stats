@@ -161,7 +161,7 @@ class AdminController extends Controller
         $summonerMatch->assists = $participant['assists'];
         $summonerMatch->level = $participant['level'];
         $summonerMatch->farm = $participant['minionsKilled'] + $participant['neutralMinionsKilled'];
-        $summonerMatch->role = ReplaybookDataConvert::convertRoleNames($participant['individualPosition']);
+        $summonerMatch->role = ReplaybookDataConvert::convertRoleNames($participant['teamPosition']);
 
         if($currentParticipantKey < 5){
             $summonerMatch->team = "blue";
