@@ -187,7 +187,7 @@ class AdminController extends Controller
             return false;
         }
 
-        $requiredParticipantKeys = array('name', 'championsKilled', 'numDeaths', 'assists', 'skin', 'level', 'minionsKilled', 'neutralMinionsKilled', 'individualPosition', 'win');
+        $requiredParticipantKeys = array('name', 'championsKilled', 'numDeaths', 'assists', 'skin', 'level', 'minionsKilled', 'neutralMinionsKilled', 'teamPosition', 'win');
 
         foreach($replayData['participants'] as $key => $participant){
             $arrayCheck = !array_diff_key(array_flip($requiredParticipantKeys), $participant);
