@@ -55,7 +55,7 @@ class DataController extends Controller
         $summonerData['winCount'] = $games->where('didWin', 1)->count();
         $summonerData['lossCount'] = $games->where('didWin', 0)->count();
         $summonerData['top'] = $games->where('role', 'top')->count();
-        $summonerData['mid'] = $games->where('role', 'mid')->count();
+        $summonerData['mid'] = $games->where('role', 'middle')->count();
         $summonerData['adc'] = $games->where('role', 'adc')->count();
         $summonerData['jungle'] = $games->where('role', 'jungle')->count();
         $summonerData['support'] = $games->where('role', 'support')->count();
