@@ -113,7 +113,7 @@ class DataController extends Controller
             $championData['totalKills'] = $games->toQuery()->sum('kills');
 
             $championData['pickRate'] = round($totalGameCount / $totalMatchCount * 100, 3);
-            $championData['winRate'] = round($championData['winCount'] / $totalMatchCount * 100, 3);
+            $championData['winRate'] = round($championData['winCount'] / $totalGameCount * 100, 3);
 
             $championData['averageKills'] = round($championData['totalKills'] / $totalGameCount, 3);
             $championData['averageDeaths'] = round($championData['totalDeaths'] / $totalGameCount, 3);
