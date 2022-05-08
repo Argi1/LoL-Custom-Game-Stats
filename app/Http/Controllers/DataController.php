@@ -151,7 +151,7 @@ class DataController extends Controller
     }
 
     public function showMatchHistory(){
-        $allMatches = MatchHistory::all();
+        $allMatches = MatchHistory::all()->sortByDesc('created_at');
         $totalMatchCount = $allMatches->count();
 
         $winningTeamInMatches = array();
