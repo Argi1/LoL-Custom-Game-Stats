@@ -105,15 +105,19 @@
                         @if($championData['mostPlayedBy'] != "")
                         <h2 class="px-0.5 text-gray-400 text-xl font-semibold">
                             @foreach ($championData['mostPlayedBy'] as $key => $mostPlayed)
-                            <a class="hover:text-gray-200" href="/summoner/{{$championData['mostPlayedBy']}}">
+                            <a class="hover:text-gray-200" href="/summoner/{{$mostPlayed->name}}">
                                 {{$mostPlayed->name}}
                             </a>
-                            @if($key < count($championData['mostPlayedBy']) - 1) & @endif @endforeach </h2>
-                                @else
-                                <h2 class="px-0.5 text-gray-400 text-xl font-semibold">
-                                    No One
-                                </h2>
-                                @endif
+                                @if($key < count($championData['mostPlayedBy']) - 1) 
+                                    & 
+                                @endif 
+                            @endforeach 
+                        </h2>
+                        @else
+                            <h2 class="px-0.5 text-gray-400 text-xl font-semibold">
+                                No One
+                            </h2>
+                        @endif
                     </div>
                 </div>
             </div>
