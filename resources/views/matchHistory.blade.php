@@ -47,15 +47,21 @@
                                         </div>
                                         <div class="text-sm leading-5 font-semibold"><span
                                                 class="text-md leading-4 font-normal text-gray-500">
-                                                Game ID:
-                                            </span>
-                                            {{$match->match_id}}
-                                        </div>
-                                        <div class="text-sm leading-5 font-semibold"><span
-                                                class="text-md leading-4 font-normal text-gray-500">
                                                 Game Duration:
                                             </span>
                                             {{$match->game_time}}
+                                        </div>
+                                        <div class="text-sm leading-5 font-semibold"><span
+                                                class="text-md leading-4 font-normal text-gray-500">
+                                                Game Date:
+                                            </span>
+                                            {{date('d.m.Y', strtotime($match->game_date))}}
+                                        </div>
+                                        <div class="text-sm leading-5 font-semibold"><span
+                                                class="text-md leading-4 font-normal text-gray-500">
+                                                Game ID:
+                                            </span>
+                                            {{$match->match_id}}
                                         </div>
                                         <div>
                                             <a href="/matches/{{$match->match_id}}">
