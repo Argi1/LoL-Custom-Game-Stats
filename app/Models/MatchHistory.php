@@ -19,6 +19,7 @@ class MatchHistory extends Model
         'ban8',
         'ban9',
         'ban10',
+        'game_date'
     ];
     protected $primaryKey = 'match_id';
     protected $table = 'match_history';
