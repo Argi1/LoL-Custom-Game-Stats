@@ -101,6 +101,12 @@
             class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 bg-neutral-900"
             type="text" list="champions" placeholder="Champion name" required name="ban10" />
         </div>
+        <div class="grid grid-cols-1 mt-3 mx-7">
+          <label class="uppercase md:text-sm text-xs text-gray-200  font-semibold">Date of Game</label>
+          <input
+            class="py-2 px-3 rounded-lg border-2 text-gray-500 border-purple-300 mt-1 focus:outline-none focus:ring-2 bg-neutral-900"
+            type="date" required name="dateOfGame"/>
+        </div>
 
         <datalist id="champions">
           @foreach($championList as $champion)

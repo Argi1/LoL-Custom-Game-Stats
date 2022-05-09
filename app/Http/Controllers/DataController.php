@@ -49,7 +49,7 @@ class DataController extends Controller
         $summoner = Summoner::firstWhere('name', $name);
         $summonerData = array();
 
-        $games = $summoner->summonerMatches->sortByDesc('created_at');
+        $games = $summoner->summonerMatches->sortByDesc('game_date');
 
         $summonerData['gameCount'] = $games->count();
         $summonerData['winCount'] = $games->where('didWin', 1)->count();
@@ -69,7 +69,7 @@ class DataController extends Controller
 
         $championData = array();
 
-        $games = $champion->championMatches->sortByDesc('created_at');
+        $games = $champion->championMatches->sortByDesc('game_date');
         
         $totalMatchCount = MatchHistory::count();
         $totalGameCount = $games->count();
@@ -151,7 +151,7 @@ class DataController extends Controller
     }
 
     public function showMatchHistory(){
-        $allMatches = MatchHistory::all()->sortByDesc('created_at');
+        $allMatches = MatchHistory::all()->sortByDesc('game_date');
         $totalMatchCount = $allMatches->count();
 
         $winningTeamInMatches = array();
