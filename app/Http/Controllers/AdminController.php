@@ -61,7 +61,8 @@ class AdminController extends Controller
         if ($request->is('admin/*')) {
             
             $replay = $request->file('replay');
-            $bans = $request->except('_token', 'replay');
+            $bans = $request->except('_token', 'replay', 'dateOfGame');
+            $dateOfGame = $request->input('dateOfGame');
             
             $replayData = json_decode($replay->get(), true);
 
@@ -71,7 +72,7 @@ class AdminController extends Controller
             
             if(MatchHistory::firstWhere('match_id', $replayData['matchId']) == null){
 
-                self::createMatch($replayData['matchId'], $replayData['gameDuration'], $bans);
+                self::createMatch($replayData['matchId'], $replayData['gameDuration'], $bans, $dateOfGame);
                 
                 foreach($replayData['participants'] as $key => $participant){
 
@@ -94,11 +95,16 @@ class AdminController extends Controller
     }
 
     //Create a new match in MatchHistory table and fill it with data
-    public function createMatch($matchId, $matchDuration, $bans){
+    public function createMatch($matchId, $matchDuration, $bans, $dateOfGame){
         $match = new MatchHistory();
         $match->match_id = $matchId;
 
         $match->game_time = gmdate("H:i:s", $matchDuration / 1000);
+
+        $formatedDateOfGame = new DateTime($dateOfGame);
+        $formatedDateOfGame->setTime(gmdate('H'), gmdate('i'), gmdate('s'));
+
+        $match->game_date = $formatedDateOfGame;
 
         $banList = array();
 
