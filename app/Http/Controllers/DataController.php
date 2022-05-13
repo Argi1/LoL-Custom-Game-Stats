@@ -118,8 +118,12 @@ class DataController extends Controller
             $championData['averageKills'] = round($championData['totalKills'] / $totalGameCount, 3);
             $championData['averageDeaths'] = round($championData['totalDeaths'] / $totalGameCount, 3);
             $championData['averageAssists'] = round($championData['totalAssists'] / $totalGameCount, 3);
-            $championData['averageKda'] = round(($championData['totalAssists'] + $championData['totalKills']) / $championData['totalDeaths'], 3);
 
+            if($championData['totalAssists'] + $championData['totalKills'] == 0 && $championData['totalDeaths'] == 0){
+                $championData['averageKda'] = 0;
+            }else{
+                $championData['averageKda'] = round(max($championData['totalAssists'] + $championData['totalKills'], 1) / max($championData['totalDeaths'], 1), 3);
+            }
             $summonersChampionPlayCounts = $games->toQuery()->selectRaw('summoner_id, count(*)')->groupBy('summoner_id')->orderByRaw('COUNT(*) DESC')->limit(5)->get();
             $highestPlayCount = $summonersChampionPlayCounts[0]['count(*)'];
             $summonersWhoPlayedMost = array();
