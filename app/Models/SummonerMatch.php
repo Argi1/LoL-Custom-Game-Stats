@@ -19,7 +19,8 @@ class SummonerMatch extends Model
         'didWin',
         'match_id',
         'team',
-        'farm'
+        'farm',
+        'game_date'
     ];
 
     protected $primaryKey = 'summoner_match_id';

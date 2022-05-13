@@ -64,6 +64,9 @@ class AdminController extends Controller
             $bans = $request->except('_token', 'replay', 'dateOfGame');
             $dateOfGame = $request->input('dateOfGame');
             
+            $formatedDateOfGame = new DateTime($dateOfGame);
+            $formatedDateOfGame->setTime(gmdate('H'), gmdate('i'), gmdate('s'));
+            
             $replayData = json_decode($replay->get(), true);
 
             if(!self::validateMatchData($replayData, $bans)){
@@ -72,7 +75,7 @@ class AdminController extends Controller
             
             if(MatchHistory::firstWhere('match_id', $replayData['matchId']) == null){
 
-                self::createMatch($replayData['matchId'], $replayData['gameDuration'], $bans, $dateOfGame);
+                self::createMatch($replayData['matchId'], $replayData['gameDuration'], $bans, $formatedDateOfGame);
                 
                 foreach($replayData['participants'] as $key => $participant){
 
@@ -83,7 +86,7 @@ class AdminController extends Controller
                         $championId = Champion::select('champion_id')->firstWhere('name', $participant["skin"])->champion_id;
                     }
 
-                    self::createSummonerMatch($participant, $championId, $summoner['summoner_id'], $replayData['matchId'], $key);
+                    self::createSummonerMatch($participant, $championId, $summoner['summoner_id'], $replayData['matchId'], $key, $formatedDateOfGame);
                 }
             }
             else{
@@ -101,10 +104,7 @@ class AdminController extends Controller
 
         $match->game_time = gmdate("H:i:s", $matchDuration / 1000);
 
-        $formatedDateOfGame = new DateTime($dateOfGame);
-        $formatedDateOfGame->setTime(gmdate('H'), gmdate('i'), gmdate('s'));
-
-        $match->game_date = $formatedDateOfGame;
+        $match->game_date = $dateOfGame;
 
         $banList = array();
 
@@ -157,7 +157,7 @@ class AdminController extends Controller
         return $summoner;
     }
 
-    public function createSummonerMatch($participant, $championId, $summonerId, $matchId, $currentParticipantKey){
+    public function createSummonerMatch($participant, $championId, $summonerId, $matchId, $currentParticipantKey, $dateOfGame){
         $summonerMatch = new SummonerMatch();
 
         $summonerMatch->summoner_id = $summonerId;
@@ -168,6 +168,8 @@ class AdminController extends Controller
         $summonerMatch->level = $participant['level'];
         $summonerMatch->farm = $participant['minionsKilled'] + $participant['neutralMinionsKilled'];
         $summonerMatch->role = ReplaybookDataConvert::convertRoleNames($participant['teamPosition']);
+
+        $summonerMatch->game_date = $dateOfGame;
 
         if($currentParticipantKey < 5){
             $summonerMatch->team = "blue";
