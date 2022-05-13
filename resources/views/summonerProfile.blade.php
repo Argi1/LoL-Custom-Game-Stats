@@ -80,8 +80,13 @@
                         </div>
                         <div>
                             <span class="text-md">KDA</span>
-                            <h2 class="px-0.5 text-gray-400 text-xl font-semibold">{{round(($summoner->total_kills +
-                                $summoner->total_assists) / $summoner->total_deaths, 3)}}</h2>
+                            <h2 class="px-0.5 text-gray-400 text-xl font-semibold">
+                                @if($summoner->total_assists == 0 && $summoner->total_kills == 0 && $game->total_deaths == 0)
+                                    0
+                                @else
+                                    {{round(max($summoner->total_kills + $summoner->total_assists, 1) / max($summoner->total_deaths, 1), 3)}}
+                                @endif
+                            </h2>
                         </div>
                     </div>
                 </div>
@@ -161,7 +166,11 @@
                                             <span class="text-md leading-4 font-normal text-gray-500">
                                                 KDA
                                             </span>
-                                            {{round(($game->assists + $game->kills) / $game->deaths, 3)}}
+                                            @if($game->assists == 0 && $game->kills == 0 && $game->deaths == 0)
+                                                0
+                                            @else
+                                                {{round(max($game->assists + $game->kills, 1) / max($game->deaths, 1), 3)}}
+                                            @endif
                                         </div>
                                         <div class="text-md leading-4 font-normal">
                                             <span class="text-md leading-4 font-normal text-gray-500">
