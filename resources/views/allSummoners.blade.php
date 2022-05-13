@@ -67,12 +67,10 @@
                                     {{$summoner->total_assists}}
                                 </td>
                                 <td class="border-r pr-6 border-gray-200/40">
-                                    @if($summoner->total_kills + $summoner->total_assists != 0 &&
-                                    $summoner->total_deaths != 0)
-                                    {{round(($summoner->total_assists + $summoner->total_kills) /
-                                    $summoner->total_deaths, 3)}}
+                                    @if($summoner->total_kills + $summoner->total_assists != 0 && $summoner->total_deaths != 0)
+                                        {{round(max($summoner->total_assists + $summoner->total_kills, 1) / max($summoner->total_deaths, 1), 3)}}
                                     @else
-                                    0
+                                        0
                                     @endif
                                 </td>
                                 <td class="!pr-6">
