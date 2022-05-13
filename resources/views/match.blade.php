@@ -98,10 +98,10 @@
                             <h2 class="px-0.5 text-xl font-semibold">{{$summonerMatch->assists}}</h2>
                         </div>
                         <div>
-                            @if($summonerMatch->assists + $summonerMatch->kills == 0 || $summonerMatch->deaths == 0)
+                            @if($summonerMatch->assists + $summonerMatch->kills == 0 && $summonerMatch->deaths == 0)
                             <h2 class="px-0.5 text-xl font-semibold">0</h2>
                             @else
-                            <h2 class="px-0.5 text-xl font-semibold">{{round(($summonerMatch->assists + $summonerMatch->kills) / $summonerMatch->deaths, 3)}}</h2>
+                            <h2 class="px-0.5 text-xl font-semibold">{{round(max($summonerMatch->assists + $summonerMatch->kills, 1) / max($summonerMatch->deaths, 1), 3)}}</h2>
                             @endif
                         </div>
                         <div>
@@ -175,10 +175,10 @@
                             <h2 class="px-0.5 text-xl font-semibold">{{$summonerMatch->assists}}</h2>
                         </div>
                         <div>
-                            @if($summonerMatch->assists + $summonerMatch->kills == 0 || $summonerMatch->deaths == 0)
+                            @if($summonerMatch->assists + $summonerMatch->kills == 0 && $summonerMatch->deaths == 0)
                             <h2 class="px-0.5 text-xl font-semibold">0</h2>
                             @else
-                            <h2 class="px-0.5 text-xl font-semibold">{{round(($summonerMatch->assists + $summonerMatch->kills) / $summonerMatch->deaths, 3)}}</h2>
+                            <h2 class="px-0.5 text-xl font-semibold">{{round(max($summonerMatch->assists + $summonerMatch->kills, 1) / max($summonerMatch->deaths, 1), 3)}}</h2>
                             @endif
                         </div>
                         <div>

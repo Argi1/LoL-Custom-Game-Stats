@@ -196,7 +196,11 @@
                                             <span class="text-md leading-4 font-normal text-gray-500">
                                                 KDA
                                             </span>
-                                            {{round(($game->assists + $game->kills) / $game->deaths, 3)}}
+                                            @if($game->assists == 0 && $game->kills == 0 && $game->deaths == 0)
+                                                0
+                                            @else
+                                                {{round(max($game->assists + $game->kills, 1) / max($game->deaths, 1), 3)}}
+                                            @endif
                                         </div>
                                         <div class="text-md leading-4 font-normal">
                                             <span class="text-md leading-4 font-normal text-gray-500">
