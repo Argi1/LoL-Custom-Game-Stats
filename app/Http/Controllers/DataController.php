@@ -65,7 +65,7 @@ class DataController extends Controller
 
     public function showChampion($name){
         $champion = Champion::firstWhere('name', $name);
-        $id = $champion->idchampion;
+        $id = $champion->champion_id;
 
         $championData = array();
 
@@ -87,7 +87,7 @@ class DataController extends Controller
         ->orWhere('ban10', $id)->count();
 
 
-        
+        Log::debug("Ban count:" . $banCount);
 
         $championData['totalGames'] = $totalGameCount;
 
