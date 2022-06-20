@@ -40,6 +40,8 @@ class ReplaybookDataConvert
                 return 223;
             case "reksai":
                 return 421;
+            case "belveth":
+                return 200;
             default:
                 return null;
         }
