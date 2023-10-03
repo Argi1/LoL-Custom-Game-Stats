@@ -1,1 +1,3 @@
-require('./sortable');
+document.addEventListener("DOMContentLoaded", () => {
+    require('./sortable.min');
+})
