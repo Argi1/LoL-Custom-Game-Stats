@@ -45,54 +45,79 @@
                     @foreach($champions as $champion)
                         <tr class="text-md !border !border-gray-200/25">
                             <td class="border-r border-gray-200/60 !font-semibold mx-auto">
-                                <a class="hover:text-gray-400 mx-auto" href="/champion/{{$champion->name}}">
+                                <a class="hover:text-gray-400 mx-auto flex flex-col"
+                                   href="/champion/{{$champion->name}}">
                                     <img class="mx-auto w-1/3"
                                          src="{{url('../img/' . $champion->getChampionImgName() . '.png')}}"/>
                                     {{$champion->name}}
                                 </a>
                             </td>
-                            <td class="!pr-6">
-                                {{$champion->championMatches->count()}}
+                            <td class="!pr-3">
+                                <p class="text-xl font-semibold">
+                                    {{$champion->championMatches->count()}}
+                                </p>
                             </td>
-                            <td class="border-r !pr-6 !border-gray-200/60">
-                                {{$banCount[$champion->name]}}
+                            <td class="border-r !pr-3 !border-gray-200/60">
+                                <p class="text-xl font-semibold">
+                                    {{$banCount[$champion->name]}}
+                                </p>
                             </td>
-                            <td class="!pr-6">
-                                {{$champion->championMatches->where('didWin', 1)->count()}}
+                            <td class="!pr-3">
+                                <p class="text-xl font-semibold">
+                                    {{$champion->championMatches->where('didWin', 1)->count()}}
+                                </p>
                             </td>
-                            <td class="!pr-6 border-r !border-gray-200/60">
-                                {{$champion->championMatches->where('didWin', 0)->count()}}
+                            <td class="!pr-3 border-r !border-gray-200/60">
+                                <p class="text-xl font-semibold">
+                                    {{$champion->championMatches->where('didWin', 0)->count()}}
+                                </p>
                             </td>
-                            <td class="!pr-6 border-r !border-gray-200/60">
+                            <td class="!pr-3 border-r !border-gray-200/60">
                                 @if($champion->championMatches->where('didWin', 1)->count() != 0)
-                                    {{round($champion->championMatches->where('didWin', 1)->count() /
-                                    $champion->championMatches->count() * 100, 3)}}%
+                                    <p class="text-xl font-semibold">
+                                        {{round($champion->championMatches->where('didWin', 1)->count() /
+                                        $champion->championMatches->count() * 100, 3)}}%
+                                    </p>
                                 @else
-                                    0%
+                                    <p class="text-xl font-semibold">
+                                        0%
+                                    </p>
                                 @endif
                             </td>
-                            <td class="!pr-6">
+                            <td class="!pr-3">
                                 @if($champion->championMatches->count() != 0)
-                                    {{round($champion->championMatches->count() /
-                                    $matchCount * 100,2)}}%
+                                    <p class="text-xl font-semibold">
+                                        {{round($champion->championMatches->count() /
+                                        $matchCount * 100,2)}}%
+                                    </p>
                                 @else
-                                    0%
+                                    <p class="text-xl font-semibold">
+                                        0%
+                                    </p>
                                 @endif
                             </td>
                             <td class="!pr-6">
                                 @if($banCount[$champion->name] != 0)
-                                    {{round($banCount[$champion->name] /
-                                    $matchCount * 100,2)}}%
+                                    <p class="text-xl font-semibold">
+                                        {{round($banCount[$champion->name] /
+                                        $matchCount * 100,2)}}%
+                                    </p>
                                 @else
-                                    0%
+                                    <p class="text-xl font-semibold">
+                                        0%
+                                    </p>
                                 @endif
                             </td>
                             <td class="!pr-6">
                                 @if($banCount[$champion->name] + $champion->championMatches->count() != 0 )
-                                    {{round(($banCount[$champion->name] + $champion->championMatches->count()) /
-                                    $matchCount * 100,2)}}%
+                                    <p class="text-xl font-semibold">
+                                        {{round(($banCount[$champion->name] + $champion->championMatches->count()) /
+                                        $matchCount * 100,2)}}%
+                                    </p>
                                 @else
-                                    0%
+                                    <p class="text-xl font-semibold">
+                                        0%
+                                    </p>
                                 @endif
                             </td>
                         </tr>
