@@ -46,7 +46,7 @@
                         <tr class="text-md !border !border-gray-200/25">
                             <td class="border-r border-gray-200/60 !font-semibold mx-auto">
                                 <a class="hover:text-gray-400 mx-auto" href="/champion/{{$champion->name}}">
-                                    <img class="mx-auto w-1/2"
+                                    <img class="mx-auto w-1/3"
                                          src="{{url('../img/' . $champion->getChampionImgName() . '.png')}}"/>
                                     {{$champion->name}}
                                 </a>
