@@ -6,7 +6,7 @@
         <input
             class="grow py-2 px-3 rounded-lg border-1 border-purple-300 focus:outline-none focus:ring-2 bg-neutral-900 focus:bg-neutral-900"
             type="text" list="champions" placeholder="Search for a Champion or Summoner" required
-            name="search" id="search"/>
+            name="searchHead" id="searchHead"/>
 
         <button
             class="outline-hidden py-2 w-10 ml-1 text-white bg-purple-500 hover:bg-purple-700 font-medium rounded-lg text-sm p-2.5 text-center inline-flex flex-none items-center">
@@ -23,7 +23,7 @@
 <script type="text/javascript">
     var route = "{{ url('autocomplete-search') }}";
 
-    $('#search').typeahead({
+    $('#searchHead').typeahead({
         source: function (query, process) {
             return $.get(route, {
                 query: query

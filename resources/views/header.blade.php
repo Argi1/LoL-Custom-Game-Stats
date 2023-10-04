@@ -61,7 +61,7 @@
         </div>
         <div class="hidden nav-search-bar grow justify-end">
             <div class="bg-zinc-800 p-3 rounded-b-lg w-min">
-                @include('searchBar')
+                @include('searchBarHeader')
             </div>
         </div>
     </div>
@@ -70,7 +70,7 @@
 <div class="hidden mobile-menu mt-14 w-72 h-full absolute bg-zinc-900 z-50">
     <ul class="relative text-lg font-semibold">
         <li class="mt-4 ml-3 w-2/3">
-            @include('searchBar')
+            @include('searchBarHeader')
         </li>
         <li>
             <a class="inline-block text-gray-200 no-underline hover:text-gray-400 py-3 px-3"
