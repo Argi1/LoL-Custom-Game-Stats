@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<nav class="bg-zinc-800 p-2 mt-0 fixed w-full z-51 top-0 h-24 lg:h-16">
+<nav class="bg-zinc-800 p-2 mt-0 fixed w-full z-51 top-0 h-26 lg:h-16 min-h-fit">
     <div class="container mx-auto flex flex-wrap items-center">
         <div class="flex w-1/2 sm:w-full lg:w-1/2 sm:justify-center lg:justify-start text-white font-extrabold">
             <a class="text-gray-200 no-underline hover:text-gray-200 hover:no-underline" href="/">
@@ -41,7 +41,7 @@
                              stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6">
                             <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
-                        </a>
+                    </button>
                 </li>
             </ul>
         </div>

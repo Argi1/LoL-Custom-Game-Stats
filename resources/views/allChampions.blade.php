@@ -30,7 +30,7 @@
                        data-sortable>
                     <thead>
                     <tr class="text-xl !border-2 !border-gray-200/60">
-                        <th class="border-r border-gray-200/60">Champion Name</th>
+                        <th class="border-r border-gray-200/60">Champion</th>
                         <th>Pick Count</th>
                         <th class="border-r !border-gray-200/60">Ban Count</th>
                         <th>Wins</th>
@@ -44,8 +44,10 @@
                     <tbody>
                     @foreach($champions as $champion)
                         <tr class="text-md !border !border-gray-200/25">
-                            <td class="border-r border-gray-200/60 !pr-6 !font-semibold">
-                                <a class="hover:text-gray-400" href="/champion/{{$champion->name}}">
+                            <td class="border-r border-gray-200/60 !font-semibold mx-auto">
+                                <a class="hover:text-gray-400 mx-auto" href="/champion/{{$champion->name}}">
+                                    <img class="mx-auto"
+                                         src="{{url('../img/' . $champion->getChampionImgName() . '.png')}}"/>
                                     {{$champion->name}}
                                 </a>
                             </td>

@@ -8,7 +8,7 @@
 
 <body class="antialiased">
 <div class="flex items-center justify-center pt-24 pb-5">
-    <div class="grid bg-zinc-900 rounded-lg shadow-xl w-11/12">
+    <div class="grid bg-zinc-900 rounded-lg shadow-xl w-11/12 min-w-fit">
         <div class="flex justify-start py-2 px-3">
             <div class="flex">
                 <h1 class="text-gray-200 font-bold text-4xl">{{$summoner->name}}</h1>
@@ -96,7 +96,7 @@
                 <span class="text-2xl font-bold">Latest Games</span>
                 <div class="mt-3">
                     @foreach ($games as $game)
-                        <div class="bg-zinc-900 mx-auto border rounded-sm mb-0.5 h-30 mt-2">
+                        <div class="bg-zinc-900 mx-auto border rounded-sm mb-0.5 h-30 mt-2 min-w-min">
                             @if($game->didWin == 1)
                                 <div class="flex p-3 border-l-8 border-blue-600">
                                     @else
@@ -136,34 +136,38 @@
                                                 </div>
                                             </div>
                                             <div
-                                                class="flex-1 md:grid grid-cols-6 ml-2 md:py-9 border-r-2 space-y-1 gap-x-2">
-                                                <div class="text-xl leading-6 font-normal col-span-2">
+                                                class="flex-1 md:grid grid-cols-6 ml-2 border-r-2 space-y-1 gap-x-2 min-w-fit">
+                                                <div
+                                                    class="text-xl leading-6 font-normal col-span-2 row-span-2 my-auto">
                                                     <a href="/champion/{{$game->champion->name}}">
-                                                        <div class="hover:text-gray-400">
-                                                            {{$game->champion->name}}
+                                                        <div
+                                                            class="hover:text-gray-400 flex flex-row gap-1 my-auto">
+                                                            <img class="w-20"
+                                                                 src="{{url('../img/' . $game->champion->getChampionImgName() . '.png')}}"/>
+                                                            <p class="my-auto">{{$game->champion->name}}</p>
                                                         </div>
                                                     </a>
                                                 </div>
-                                                <div class="text-md leading-4 font-normal">
+                                                <div class="text-md leading-4 font-normal my-auto">
                                             <span class="text-md leading-4 font-normal text-gray-500">
                                                 Kills
                                             </span>
                                                     {{$game->kills}}
                                                 </div>
-                                                <div class="text-md leading-4 font-normal">
+                                                <div class="text-md leading-4 font-normal my-auto">
                                             <span class="text-md leading-4 font-normal text-gray-500">
                                                 Deaths
                                             </span>
                                                     {{$game->deaths}}
                                                 </div>
-                                                <div class="text-md leading-4 font-normal">
+                                                <div class="text-md leading-4 font-normal my-auto">
                                             <span class="text-md leading-4 font-normal text-gray-500">
                                                 Assists
                                             </span>
                                                     {{$game->assists}}
                                                 </div>
                                                 <div
-                                                    class="text-md leading-4 font-normal row-start-2 col-start-4">
+                                                    class="text-md leading-4 font-normal row-start-2 col-start-4 my-auto">
                                             <span class="text-md leading-4 font-normal text-gray-500">
                                                 KDA
                                             </span>
@@ -173,14 +177,14 @@
                                                         {{round(max($game->assists + $game->kills, 1) / max($game->deaths, 1), 3)}}
                                                     @endif
                                                 </div>
-                                                <div class="text-md leading-4 font-normal">
+                                                <div class="text-md leading-4 font-normal my-auto">
                                             <span class="text-md leading-4 font-normal text-gray-500">
                                                 Farm
                                             </span>
                                                     {{$game->farm}}
                                                 </div>
                                             </div>
-                                            <div class="grid content-center">
+                                            <div class="grid content-center min-w-fit">
                                                 <a href="/matches/{{$game->match_id}}">
                                                     <div
                                                         class="ml-3 bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white p-0.5 w-20">
@@ -199,6 +203,7 @@
             </div>
         </div>
     </div>
+</div>
 </body>
 
 </html>

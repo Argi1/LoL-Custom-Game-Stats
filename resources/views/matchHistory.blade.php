@@ -122,8 +122,11 @@
                                                                 <td class="px-2">
                                                                     <a
                                                                         href="/champion/{{$player->champion->name}}">
-                                                                        <div class="text-sm hover:text-gray-400">
-                                                                            {{$player->champion->name}}
+                                                                        <div
+                                                                            class="text-sm hover:text-gray-400 flex flex-row gap-2">
+                                                                            <img class="w-6"
+                                                                                 src="{{url('../img/' . $player->champion->getChampionImgName() . '.png')}}"/>
+                                                                            <p class="my-auto">{{$player->champion->name}}</p>
                                                                         </div>
                                                                     </a>
                                                                 </td>
