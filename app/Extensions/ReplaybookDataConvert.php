@@ -4,8 +4,9 @@ namespace App\Extensions;
 
 class ReplaybookDataConvert
 {
-    public static function convertChampionName($name){
-        switch(strtolower($name)){
+    public static function convertChampionName($name)
+    {
+        switch (strtolower($name)) {
             case "twistedfate":
                 return 4;
             case "xinzhao":
@@ -42,13 +43,16 @@ class ReplaybookDataConvert
                 return 421;
             case "belveth":
                 return 200;
+            case 'ksante':
+                return 897;
             default:
                 return null;
         }
     }
 
-    public static function convertRoleNames($role){
-        switch(strtolower($role)){
+    public static function convertRoleNames($role)
+    {
+        switch (strtolower($role)) {
             case "bottom":
                 return "adc";
             case "utility":
